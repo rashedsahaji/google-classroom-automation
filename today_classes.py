@@ -18,21 +18,14 @@ opt.add_experimental_option("prefs", { \
 })
 
 # WHEN THESE WORDS ARE TRIGGERED A MESSAGE WILL BE SENT
-alertWords = [ "your_name", "are you there", "unmute yourself", "say something", "can you hear me"]
+alertWords = [ "Rashed", "are you there", "unmute yourself", "say something", "can you hear me"]
 
 # TIME TABLE HERE
-subjects = {'monday' : ['UNIX', 'OOAD', 'CD', 'OS', 'DBMS'],
-                'wednesday' : ['CD', 'OOAD', 'OS','DBMS', 'OS'],
-                'friday' : ['OOAD', 'PEHV', 'CD',  'OS', 'UNIX'],
-              }
+subjects = {'friday' : ['FUNDAMENTAL', 'ACHRILAB']}
 
 # GOOGLE MEET LINKS TO RESPECTIVE SUBJECTS
-classes = { 'UNIX':	'https://meet.google.com/lookup/e3667sh3xh',
-                'CD':'link_to_sub',
-                'PEHV':'link_to_sub',
-                'OS':'link_to_sub',
-                'OOAD':'link_to_sub',
-                'DBMS':'link_to_sub'
+classes = { 'FUNDAMENTAL':	'https://meet.google.com/lookup/e3667sh3xh',
+                'ACHRILAB':'link_to_sub',
           }
 
 # RETURNS CURRENT DAY
@@ -48,10 +41,10 @@ def find_classes():
     subs = []
     day = find_day()
     classes = subjects[day]
-    # CHANGE ACCORDING TO YOUR TIME TABLE, I DONT HAVE CLASSES ON Tues, Thurs, Sat. SO MY CODE 
-    if day != 'tuesday' and day != 'thursday'  and day != 'saturday'  and day != 'sunday' :
+    # CHANGE ACCORDING TO YOUR TIME TABLE, I DONT HAVE CLASSES ON Tues, Thurs, Sat. SO MY CODE
+    if day != 'tuesday' and day != 'wednesday' and day != 'monday' and day != 'thursday'  and day != 'saturday'  and day != 'sunday' :
         # CHANGE ACCORDING TO YOUR CLASS TIMINGS
-        timings = ['09:15 am - 10:00 am','10:05 am - 10:50 am', '12:59 pm - 12:40 pm', '12:45 am - 12:30 pm', '12:35 pm - 01:20 pm']
+        timings = ['12:20 pm - 01:50 pm','03:40 pm - 05:10 pm']
         for i in range(len(timings)):
             formatted = '{} {}'.format(timings[i],classes[i])
             subs.append(formatted)
@@ -99,10 +92,10 @@ def open_link(url):
         # turns off mic
         mic=driver.find_element_by_xpath('//*[@id="yDmH0d"]/c-wiz/div/div/div[8]/div[3]/div/div/div[2]/div/div[1]/div[1]/div[1]/div/div[4]/div[1]/div/div/div')
         mic.click()
-        
+
         # clicks join button
         join=driver.find_element_by_xpath('//*[@id="yDmH0d"]/c-wiz/div/div/div[8]/div[3]/div/div/div[2]/div/div[1]/div[2]/div/div[2]/div/div[1]/div[1]')
-        join.click() 
+        join.click()
         time.sleep(3)
 
         # closes the popup
@@ -112,7 +105,7 @@ def open_link(url):
         # turn on captions
         driver.find_element_by_xpath('//*[@id="ow3"]/div[1]/div/div[8]/div[3]/div[9]/div[3]/div[2]/div/span/span/div').click()
         time.sleep(5)
-        
+
         # Reads the text from captions
         while True:
             try:
